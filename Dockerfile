@@ -7,6 +7,7 @@ RUN unzip -j rclone.zip *rclone
 RUN chmod +x rclone
 
 FROM alpine:3.6
+RUN apk --no-cache add ca-certificates
 COPY --from=temp /rclone /usr/bin/rclone
 ENTRYPOINT ["/usr/bin/rclone"]
 CMD ["--help"]
